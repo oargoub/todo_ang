@@ -1,0 +1,130 @@
+<app-header></app-header>
+
+<div class="container">
+  <form [formGroup]="inscriForm" (ngSubmit)="inscription()">
+    <div class="row">
+
+      <div class="form-group col-lg-6">
+        <label class="control-label " for="inputNom">First name:</label>
+        <input type="text" id="inputNom" class="form-control " name="nom" formControlName="nom"
+          placeholder="Enter your First name">
+
+        <div *ngIf="nom.touched && nom.invalid" class="alert alert-danger mt-2">
+
+          <div *ngIf="nom.errors.required">
+            Le champ Nom est obligatoire !
+          </div>
+
+          <div *ngIf="nom.errors.pattern">
+            Le champ Nom doit être alphabétique
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="form-group col-lg-6">
+        <label class="control-label" for="inputPrenom">Last name:</label>
+        <input type="text" id="inputPrenom" class="form-control" name="prenom" formControlName="prenom"
+          placeholder="Enter your Last name ">
+        <div *ngIf="prenom.touched && prenom.invalid" class="alert alert-danger mt-2">
+          <div *ngIf="prenom.errors.required">
+            Le champ est obligatoire
+          </div>
+
+          <div *ngIf="prenom.errors.pattern">
+            Le champ Nom doit être alphabétique
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="form-group  col-lg-6">
+        <label class="control-label" for="inputnuméro">Phone number:</label>
+
+        <input type="text" id="inputnuméro" class="form-control " name="telephone" formControlName="telephone"
+          placeholder="Enter your phone number ">
+        <div *ngIf="telephone.touched && telephone.invalid" class="alert alert-danger mt-2">
+          
+          <div *ngIf="telephone.errors.required">
+            Le champ est obligatoire
+          </div>
+
+          <div *ngIf="telephone.errors.pattern">
+            Le champ télèphone doit être numérique
+          </div>
+          <div *ngIf="telephone.errors.minlength">
+            Le numéro de télèphone doit contenir 8 chiffres au minimum
+          </div>
+          <div *ngIf="telephone.errors.maxlength">
+            Le numéro de télèphone doit contenir 13 chiffres au maximum
+          </div>
+
+
+        </div>
+      </div>
+
+      <div class="form-group col-lg-6">
+        <label for="exampleInputEmail1">Email address:</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email"
+          formControlName="email" placeholder="Enter email">
+
+        <div *ngIf="email.touched && email.invalid" class="alert alert-danger mt-2">
+
+          <div *ngIf="email.errors.required">
+            Le champ email est obligatoire
+          </div>
+
+          <div *ngIf="email.errors.email">
+            Le champ email est invalide
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-lg-6">
+        <label for="exampleInputPassword1">Password:</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" name="motDePasse"
+          formControlName="motDePasse" placeholder="Password">
+        <div *ngIf="motDePasse.touched && motDePasse.invalid" class="alert alert-danger mt-2">
+
+          <div *ngIf="motDePasse.errors.required">
+            Le champ mot de passe est obligatoire
+          </div>
+
+          <div *ngIf="motDePasse.errors.minlength">
+            Le password doit contenir 8 chiffres au minimum
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="form-group col-lg-6">
+        <label for="exampleInputPassword2">Confirm your Password:</label>
+        <input type="password" class="form-control" id="exampleInputPassword2" name="reMotDePasse"
+          formControlName="reMotDePasse" placeholder="Confirm your Password">
+
+        <div *ngIf="reMotDePasse.touched && reMotDePasse.invalid" class="alert alert-danger mt-2">
+          le champ mot de passe est obligatoire
+        </div>
+
+        <div *ngIf="reMotDePasse.valid && inscriForm.errors?.passwordsShouldMatch" class="alert alert-danger mt-2">
+          Les mots de passe doivent etre identiques
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <input type="submit" class="btn btn-primary" value="s'inscrire" [disabled]="inscriForm.invalid">
+  </form>
+
+</div>
+<app-footer></app-footer>

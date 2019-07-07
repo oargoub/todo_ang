@@ -1,0 +1,21 @@
+<app-header></app-header>
+
+<div class="container">
+  <form>
+    
+    <div class="form-group col-lg-3">
+      <p>Titre : <input type="text" class="form-control" name="titre"></p>
+    </div>
+    
+    <div class="form-group col-lg-6">
+      <p>Description : <input type="text" class="form-control" name="description"></p>
+    </div>
+    
+    <div class="col-lg-2">
+      <button class="btn btn-primary" [routerLink]="['/todo-list']">Ajouter</button>
+    </div>
+
+  </form>
+</div>
+
+<app-footer></app-footer>

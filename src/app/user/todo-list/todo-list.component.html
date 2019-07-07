@@ -1,0 +1,77 @@
+<app-header></app-header>
+
+<div class="container ">
+  <button class="btn btn-info my-3" [routerLink]="['/add-todo']">Ajouter todo</button>
+  <hr>
+  <h2>{{titre1}}</h2>
+
+  <div *ngIf="todoList.length > 0 ; then todo else noTodo"></div>
+
+  <ng-template #noTodo>
+    <div class="alert alert-warning">
+      Aucun Todo
+    </div>
+  </ng-template>
+
+  <ng-template #todo>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Titre</th>
+          <th scope="col">Date d'ajout</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let todo of todoList">
+          <th scope="row">{{todo.num}}</th>
+          <td>{{todo.titre}}</td>
+          <td>{{todo.dateAjout}}</td>
+          <td>
+            <button class="btn btn-success" (click)="addTo(todo)">Terminer</button>
+            <button class="btn btn-warning mx-3" [routerLink]="[ '/update-todo',todo.num]">Modifier</button>
+            <button class="btn btn-danger" (click)="delete(todo)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-template>
+
+
+  <hr>
+  <h2>{{titre2}}</h2>
+  <div *ngIf="done.length > 0 ; then do else nodone"></div>
+
+  <ng-template #nodone>
+    <div class="alert alert-warning">
+      Aucun done
+    </div>
+  </ng-template>
+  <ng-template #do>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Titre</th>
+        <th scope="col">Date d'ajout</th>
+        <th scope="col">Date fin</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let finish of done">
+            <th scope="row">{{finish.num}}</th>
+            <td>{{finish.titre}}</td>
+            <td>{{finish.dateAjout}}</td>
+            <td>{{finish.dateFin}}</td>
+        <td>
+          <button class="btn btn-danger"(click)="delete2(finish)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template>
+</div>
+
+<app-footer></app-footer>
