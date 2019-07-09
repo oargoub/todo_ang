@@ -59,6 +59,12 @@ export class TodoListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    let token = localStorage.getItem('token');
+    console.log(token);
+
+    //appel fonction service liste todo
+    //appel fonction service liste done
+    
   }
 
   addTo(todo) { 
@@ -81,4 +87,3 @@ export class TodoListComponent implements OnInit {
   }
 
 }
-

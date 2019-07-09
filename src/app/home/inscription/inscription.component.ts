@@ -74,6 +74,7 @@ export class InscriptionComponent implements OnInit {
     this._us.inscriUser(this.inscriForm.value).subscribe(
       (res) => {
         this.toastr.success('', res.message);
+
         setTimeout(()=>{
          this.router.navigate(['/']); 
         },2000)
